@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My advice generator app</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      href="/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="pop-up">Sorry, could not get new advice</div>
+    <div class="container">
+      <div class="advice-number"></div>
+      <div class="main"></div>
+      <div class="divider-line">
+        <img src="/images/pattern-divider-desktop.svg" alt="" />
+      </div>
+      <div class="dice-icon"><img src="/images/icon-dice.svg" alt="" /></div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        handleClick();
+        if (advice.textContent == "") retrievePrevAdvice();
+        return;
+      });
+
+      let advice = document.querySelector(".main");
+
+      let adviceNumber = document.querySelector(".advice-number");
+
+      let diceIcon = document.querySelector(".dice-icon");
+
+      function renderAdvice(adviceSlip, adviceId) {
+        adviceNumber.innerHTML = ` Advice #${adviceId}`;
+        advice.innerHTML = `&ldquo;${adviceSlip}&rdquo;`;
+      }
+      function retrievePrevAdvice() {
+        const advice = localStorage.getItem("advice");
+        const adviceId = localStorage.getItem("adviceId");
+        renderAdvice(advice, adviceId);
+        showPopUp();
+      }
+      function handleClick() {
+        getAdvice()
+          .then(({ slip }) => {
+            console.log(slip);
+            renderAdvice(slip.advice, slip.id);
+            localStorage.setItem("advice", `${slip.advice}`);
+            localStorage.setItem("adviceId", `${slip.id}`);
+          })
+          .catch(() => {
+            showPopUp();
+          });
+      }
+      async function getAdvice() {
+        let response = await fetch("https://api.adviceslip.com/advice");
+        let data = response.json();
+        return data;
+      }
+
+      diceIcon.addEventListener("click", handleClick);
+      function showPopUp() {
+        document.querySelector(".pop-up").classList.toggle("active");
+        document.querySelector(".dice-icon").classList.add("disable");
+        setTimeout(() => {
+          document.querySelector(".pop-up").classList.remove("active");
+          document.querySelector(".dice-icon").classList.remove("disable");
+        }, 2500);
+      }
+    </script>
+  </body>
+</html>

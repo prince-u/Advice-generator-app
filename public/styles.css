@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  /*Primary colors*/
+  --Light-Cyan: hsl(193, 38%, 86%);
+  --Neon-Green: hsl(150, 100%, 66%);
+
+  /*Neutral colors*/
+  --Grayish-Blue: hsl(217, 19%, 38%);
+  --Dark-Grayish-Blue: hsl(217, 19%, 24%);
+  --Dark-Blue: hsl(218, 23%, 16%);
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background-color: var(--Dark-Blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 50px;
+}
+
+.pop-up {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  background-color: var(--Dark-Grayish-Blue);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  padding: 10px;
+  color: var(--Light-Cyan);
+  font-weight: 800;
+  transform: translateY(-100%);
+  transition: transform 150ms linear;
+}
+
+.pop-up.active {
+  transform: translateY(0);
+}
+
+.container {
+  background-color: var(--Dark-Grayish-Blue);
+  width: 550px;
+  min-height: 325px;
+  border-radius: 16px;
+  padding: 40px 30px 40px;
+  text-align: center;
+  color: var(--Light-Cyan);
+  position: relative;
+}
+
+.advice-number {
+  color: var(--Neon-Green);
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.main {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 25px 0 40px 0;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dice-icon {
+  width: 60px;
+  height: 60px;
+  background-color: var(--Neon-Green);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: calc(100% - 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: box-shadow 150ms linear;
+  pointer-events: all;
+}
+
+.dice-icon.disable {
+  pointer-events: none;
+}
+
+.dice-icon:hover {
+  box-shadow: 0 0 20px 1px var(--Neon-Green);
+}
