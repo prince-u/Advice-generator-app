@@ -46,7 +46,6 @@
       function handleClick() {
         getAdvice()
           .then(({ slip }) => {
-            console.log(slip);
             renderAdvice(slip.advice, slip.id);
             localStorage.setItem("advice", `${slip.advice}`);
             localStorage.setItem("adviceId", `${slip.id}`);
