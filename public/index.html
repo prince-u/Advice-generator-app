@@ -17,9 +17,9 @@
       <div class="advice-number"></div>
       <div class="main"></div>
       <div class="divider-line">
-        <img src="/images/pattern-divider-desktop.svg" alt="" />
+        <img src="../images/pattern-divider-desktop.svg" alt="" />
       </div>
-      <div class="dice-icon"><img src="/images/icon-dice.svg" alt="" /></div>
+      <div class="dice-icon"><img src="../images/icon-dice.svg" alt="" /></div>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -42,7 +42,6 @@
         const advice = localStorage.getItem("advice");
         const adviceId = localStorage.getItem("adviceId");
         renderAdvice(advice, adviceId);
-        showPopUp();
       }
       function handleClick() {
         getAdvice()
