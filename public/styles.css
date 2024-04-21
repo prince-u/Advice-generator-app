@@ -19,6 +19,7 @@
 
 body {
   font-family: "Manrope", sans-serif;
+  font-display: swap;
   background-color: var(--Dark-Blue);
   display: flex;
   align-items: center;
@@ -95,4 +96,8 @@ body {
 
 .dice-icon:hover {
   box-shadow: 0 0 20px 1px var(--Neon-Green);
+}
+
+.dice-icon>img {
+  pointer-events: none
 }
