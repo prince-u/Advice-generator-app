@@ -29,6 +29,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 10px 0;
 }
 
 .pop-up {
@@ -53,7 +54,7 @@ body {
   background-color: var(--Dark-Grayish-Blue);
   width: 90%;
   max-width: 550px;
-  height: 325px;
+  min-height: 325px;
   border-radius: 16px;
   padding: 40px 30px 40px;
   text-align: center;
