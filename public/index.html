@@ -48,7 +48,10 @@
       }
       function handleClick() {
         //add loading pop-up here and disable button
-        document.querySelector(".pop-up.waiting").classList.add("active");
+        const isOnline = window.navigator.onLine;
+        console.log(isOnline);
+        isOnline &&
+          document.querySelector(".pop-up.waiting").classList.add("active");
         document.querySelector(".dice-icon").classList.add("disable");
 
         getAdvice()
@@ -66,7 +69,10 @@
             if (advice.textContent == "") retrievePrevAdvice();
             document
               .querySelector(".pop-up.waiting")
-              .classList.remove("active"); //Tried putting this in the async function but it didn't work, Chat-GPT says it might be a browser thing
+              .classList.contains("active") &&
+              document
+                .querySelector(".pop-up.waiting")
+                .classList.remove("active"); //Tried putting this in the async function but it didn't work, Chat-GPT says it might be a browser thing
           });
       }
       async function getAdvice() {
