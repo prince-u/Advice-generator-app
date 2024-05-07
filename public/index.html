@@ -49,7 +49,6 @@
       function handleClick() {
         //add loading pop-up here and disable button
         const isOnline = window.navigator.onLine;
-        console.log(isOnline);
         isOnline &&
           document.querySelector(".pop-up.waiting").classList.add("active");
         document.querySelector(".dice-icon").classList.add("disable");
@@ -80,7 +79,6 @@
           cache: "no-cache",
         });
         let data = await response.json();
-        console.log(data);
         return data;
       }
 
